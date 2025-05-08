@@ -1,0 +1,193 @@
+[
+    {
+      "question": "Who is the speaker of the seminar?",
+      "answer": "The speaker is Professor Amir Mohad from the American University of Beirut.",
+      "timestamp": "0:00–0:20"
+    },
+    {
+      "question": "What is the topic of the seminar?",
+      "answer": "The topic is GERT and the parameterized complexity of token sliding and token jumping.",
+      "timestamp": "0:20–0:40"
+    },
+    {
+      "question": "What is the main goal of the talk?",
+      "answer": "The goal is to introduce combinatorial reconfiguration and discuss the complexity of token jumping and token sliding.",
+      "timestamp": "0:40–1:10"
+    },
+    {
+      "question": "What is the 15 puzzle game used to illustrate in the talk?",
+      "answer": "It is used to introduce the concept of reconfiguration graphs in combinatorial reconfiguration.",
+      "timestamp": "1:10–1:50"
+    },
+    {
+      "question": "What is a reconfiguration graph?",
+      "answer": "It is a graph where each vertex represents a configuration of a problem and edges represent valid moves between configurations.",
+      "timestamp": "1:50–2:10"
+    },
+    {
+      "question": "What are token jumping and token sliding?",
+      "answer": "Token jumping allows moving a token to any other vertex as long as the set remains independent, while token sliding only allows moving to adjacent vertices.",
+      "timestamp": "2:10–3:00"
+    },
+    {
+      "question": "Why are reconfiguration problems considered interesting?",
+      "answer": "They offer insight into solution spaces, are applicable in various fields, and pose many open and accessible research problems.",
+      "timestamp": "3:00–3:30"
+    },
+    {
+      "question": "What is the computational class many reconfiguration problems fall into?",
+      "answer": "Many reconfiguration problems are PSPACE-complete.",
+      "timestamp": "3:30–4:00"
+    },
+    {
+      "question": "What is a surprising result about 3-coloring reconfiguration?",
+      "answer": "Although 3-coloring is NP-complete, reconfiguring between two 3-colorings is solvable in polynomial time.",
+      "timestamp": "4:00–4:30"
+    },
+    {
+      "question": "Do bounded treewidth graphs make reconfiguration easier?",
+      "answer": "No, even on graphs with bounded treewidth, token sliding and jumping remain PSPACE-complete.",
+      "timestamp": "4:30–5:10"
+    },
+    {
+      "question": "How do token jumping and token sliding differ in complexity on bipartite graphs?",
+      "answer": "Token jumping is NP-complete, while token sliding is PSPACE-complete on bipartite graphs.",
+      "timestamp": "5:10–5:40"
+    },
+    {
+      "question": "What parameterizations are considered in the talk?",
+      "answer": "Number of tokens (K), length of the reconfiguration sequence, and structural parameters like treewidth and pathwidth.",
+      "timestamp": "5:40–6:10"
+    },
+    {
+      "question": "What result was proven for token sliding on bipartite graphs?",
+      "answer": "Token sliding parameterized by the number of tokens is W[1]-hard on bipartite graphs.",
+      "timestamp": "6:10–6:40"
+    },
+    {
+      "question": "What is the complexity of token jumping on C3 and C4-free graphs?",
+      "answer": "It is fixed-parameter tractable (FPT) with a kernel of size O(k²).",
+      "timestamp": "6:40–7:10"
+    },
+    {
+      "question": "What happens when both bipartiteness and C4-freeness are enforced?",
+      "answer": "Both token jumping and token sliding become FPT.",
+      "timestamp": "7:10–7:40"
+    },
+    {
+      "question": "What is an open question related to token jumping?",
+      "answer": "Whether token jumping is FPT parameterized by K on bipartite graphs.",
+      "timestamp": "7:40–8:00"
+    },
+    {
+      "question": "What technique is used to prove W[1]-hardness on C4-free graphs?",
+      "answer": "A reduction from the grid tiling problem.",
+      "timestamp": "8:00–8:30"
+    },
+    {
+      "question": "What is the positive result discussed in the seminar?",
+      "answer": "The positive result is that token jumping on C3, C4-free graphs is fixed-parameter tractable (FPT) and has a quadratic kernel.",
+      "timestamp": "40:33–41:05"
+    },
+    {
+      "question": "What is the decomposition of the graph in the problem?",
+      "answer": "The graph can be decomposed into two parts: H (the rest of the graph) and J (the close neighborhood of S union T).",
+      "timestamp": "41:05–41:45"
+    },
+    {
+      "question": "What condition is required for the problem to admit a kernel?",
+      "answer": "If H is epsilon sparse and J is C3C4-free, the problem admits a kernel of size K squared plus K times (1 + 1 over epsilon).",
+      "timestamp": "41:45–42:10"
+    },
+    {
+      "question": "What is the buffer technique?",
+      "answer": "The buffer technique involves finding an independent set of size K in H to help with token movement. This technique has been used before in planar graphs and graphs without large bicliques.",
+      "timestamp": "42:10–42:55"
+    },
+    {
+      "question": "What happens when H is epsilon sparse and has more than a certain number of vertices?",
+      "answer": "When H is epsilon sparse and contains enough vertices, it guarantees the existence of a K-sized independent set in H, which solves the problem.",
+      "timestamp": "42:55–43:45"
+    },
+    {
+      "question": "What condition inside J guarantees a yes instance?",
+      "answer": "If J is C3C4-free and contains a vertex of degree at least 3K, the problem has a yes instance.",
+      "timestamp": "43:45–44:25"
+    },
+    {
+      "question": "What is the proof strategy for the second part of the claim?",
+      "answer": "The proof uses the fact that J being C3C4-free means the neighborhood of a vertex with degree 3K forms an independent set, which can be used to move tokens.",
+      "timestamp": "44:25–45:05"
+    },
+    {
+      "question": "How does the theorem relate to token jumping and token sliding?",
+      "answer": "The theorem implies that token jumping and token sliding admit a kernel of size O(K²) vertices, and this result holds for bipartite C4-free graphs.",
+      "timestamp": "49:06–49:40"
+    },
+    {
+      "question": "What is the relevance of independent sets in C3-free graphs with k²/log(k) vertices?",
+      "answer": "C3-free graphs with k²/log(k) vertices must have an independent set of size at least K, which is crucial for the kernel result.",
+      "timestamp": "49:40–50:00"
+    },
+    {
+      "question": "What is the importance of token addition and removal?",
+      "answer": "Token addition and removal are equivalent to token jumping, but they make the problem more complex. It’s only useful when you need to introduce new tokens.",
+      "timestamp": "51:49–52:34"
+    },
+    {
+      "question": "Is it possible to view the problem as a reachability question in an exponential size graph?",
+      "answer": "Yes, the problem can be viewed as a reachability question in a graph where each vertex corresponds to an independent set, and edges represent valid token moves.",
+      "timestamp": "52:34–54:05"
+    },
+    {
+      "question": "What happens if you restrict the number of times tokens can be moved to a particular vertex?",
+      "answer": "Restricting the number of times tokens can be moved to a particular vertex would change the complexity, likely making the problem easier, but the exact effect is not yet known.",
+      "timestamp": "54:05–54:28"
+    },
+    {
+      "question": "What does the W-harness result imply about the number of changes in the independent set?",
+      "answer": "The W-harness result implies that the number of changes (or slides) is minimal, with tokens only moving once to each vertex, making the sequence shorter.",
+      "timestamp": "54:28–55:10"
+    },
+    {
+      "question": "Does the problem remain hard if tokens are not moved to the same vertex multiple times?",
+      "answer": "Yes, the problem remains hard even if tokens are not allowed to move to the same vertex more than once, as shown in the W-harness result.",
+      "timestamp": "55:10–55:30"
+    },
+    {
+      "question": "Is there a link between independent sets and coloring in this problem?",
+      "answer": "Yes, the process of selecting disjoint independent sets in sequence could have implications for graph coloring problems.",
+      "timestamp": "55:30–56:05"
+    },
+    {
+      "question": "Is it possible to view the problem as a vertex disjoint independent set sequence?",
+      "answer": "Yes, you can view the problem as finding a sequence of vertex-disjoint independent sets, with the restriction that the token sequence cannot revisit vertices.",
+      "timestamp": "56:05–57:00"
+    },
+    {
+      "question": "How does this problem differ from the complexity of sliding versus jumping?",
+      "answer": "The key difference is that token sliding involves revisiting vertices, whereas token jumping does not, which is why sliding is PSPACE-complete and jumping is NP-complete on bipartite graphs.",
+      "timestamp": "57:00–57:30"
+    },
+    {
+      "question": "What is the final question about token movement?",
+      "answer": "The final question asks about restricting the number of times tokens can be moved to a particular vertex, which affects the complexity but is an open question.",
+      "timestamp": "59:47–60:19"
+    },
+    {
+      "question": "Are there any upcoming events related to the seminar?",
+      "answer": "Yes, there is a parametrized complexity workshop in December that anyone can attend, and it will discuss advanced topics in parametrized algorithms.",
+      "timestamp": "60:19–61:13"
+    },
+    {
+      "question": "Can anyone register for the workshop?",
+      "answer": "Yes, the workshop is free, online, and open to everyone, and students can also register for it.",
+      "timestamp": "61:13–61:57"
+    },
+    {
+      "question": "What was the wrap-up of the seminar?",
+      "answer": "The seminar was concluded with a thank you to the speaker and the audience, along with an announcement about the upcoming workshop.",
+      "timestamp": "61:57–62:25"
+    }
+  ]
+    
