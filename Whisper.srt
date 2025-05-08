@@ -1,0 +1,2076 @@
+1
+00:00:00,000 --> 00:00:08,160
+So, hello everyone. Welcome to the PC Seminar. Today we have this Professor Amir Mohad from
+
+2
+00:00:08,160 --> 00:00:13,040
+American University of Beirut and he'll be talking on the FART and Parametri's complex
+
+3
+00:00:13,040 --> 00:00:18,080
+city of token sliding and token jumping. Thank you for joining us, Professor. Over to you now.
+
+4
+00:00:19,440 --> 00:00:23,760
+Thank you, President. Thank you for having me. It's a real pleasure to be here.
+
+5
+00:00:23,760 --> 00:00:32,640
+So, all right, let's jump right into it. So, since I did not really know the audience too well,
+
+6
+00:00:32,640 --> 00:00:39,920
+I made the assumption that many of you maybe have not seen this area of combinatorial
+
+7
+00:00:39,920 --> 00:00:46,400
+reconfiguration problems. So, I decided what I'm going to do is I'm going to give a gentle introduction
+
+8
+00:00:46,400 --> 00:00:51,920
+to the area just to show you how many exciting problems and open problems are there.
+
+9
+00:00:52,800 --> 00:00:59,520
+And then I will talk more about token jumping and neck sliding, specifically what we know about them,
+
+10
+00:00:59,520 --> 00:01:05,840
+what we knew about them before we started working on this project, what we managed to discover
+
+11
+00:01:05,840 --> 00:01:11,840
+and the tons of questions that remain to be answered. Right, and it's a really,
+
+12
+00:01:13,600 --> 00:01:19,280
+I mean, the questions are so nice to state, so easy to state, and they are accessible really to
+
+13
+00:01:19,360 --> 00:01:25,600
+researchers at any level, which is one of the reasons why I enjoy working on these problems. So,
+
+14
+00:01:25,600 --> 00:01:32,800
+so hopefully you'll get to enjoy them too. So, before I start, I should point out that this is
+
+15
+00:01:32,800 --> 00:01:40,480
+joint work that started back in the combinatorial reconfiguration workshop almost two years ago.
+
+16
+00:01:42,160 --> 00:01:47,440
+And it's joint work with Valentine Barté, Nicolabuske, Le Mandalard, and Karl Lomer,
+
+17
+00:01:47,440 --> 00:01:57,680
+who is my master's student. All right, so the outline of the talk, it's going to be in four sections.
+
+18
+00:01:58,960 --> 00:02:04,640
+I will give a gentle introduction to combinatorial reconfiguration, because I know many of you might not
+
+19
+00:02:04,640 --> 00:02:12,960
+have seen such problems. Then I will talk about token jumping and token sliding, what we know about
+
+20
+00:02:13,120 --> 00:02:19,360
+them in terms of classical complexity or one-dimensional complexity. Then I'll talk about the
+
+21
+00:02:19,360 --> 00:02:24,720
+parameter as complexity of these two problems and what we know as of today, as we speak,
+
+22
+00:02:25,520 --> 00:02:31,120
+and what are the problems that remain to be solved. And then the last part of the lecture is where
+
+23
+00:02:31,120 --> 00:02:37,200
+I will put some of the technical stuff to show you to give you an idea about how we prove things
+
+24
+00:02:37,200 --> 00:02:42,640
+when we deal with such problems and where are the difficulties and what kind of techniques
+
+25
+00:02:42,640 --> 00:02:48,480
+have been developed. So I tried to keep the technical part as light as I could so that really we,
+
+26
+00:02:48,480 --> 00:02:56,400
+I mean, I can focus on the big picture and the questions to be asked and answered. So if you have
+
+27
+00:02:56,400 --> 00:03:02,400
+any questions along the way, please feel free to interrupt me either in the chat or by unmuting
+
+28
+00:03:02,400 --> 00:03:09,840
+yourselves. So don't worry about leaving the questions till the end. You can interrupt me whenever
+
+29
+00:03:09,840 --> 00:03:14,720
+you feel, whenever I say something that doesn't make sense. Hopefully that won't happen too often.
+
+30
+00:03:16,880 --> 00:03:23,360
+All right, so what is combinatorial configuration? So the best way I think to introduce is with a
+
+31
+00:03:23,360 --> 00:03:30,560
+familiar example, which is one player games and the most common one that we use is the 15 puzzle
+
+32
+00:03:30,560 --> 00:03:36,240
+game. So for those of you who don't know the 15 puzzle games, so you're given like a 4x4 grid
+
+33
+00:03:37,040 --> 00:03:43,520
+and you have one empty square and basically you have all the remaining 15 squares are numbered
+
+34
+00:03:43,520 --> 00:03:50,640
+from 1 to 15 and they come in some ordering and your job is to basically move the squares around
+
+35
+00:03:50,640 --> 00:03:57,760
+so that all the numbers become ordered. So it's a by-ro so they have to be ordered this way. So if you
+
+36
+00:03:57,760 --> 00:04:04,400
+notice in this figure, the only problem is that 14 and 15 are reversed but the only moves that
+
+37
+00:04:04,400 --> 00:04:12,560
+you're allowed to do is to basically move a number into the empty square. And basically you have
+
+38
+00:04:12,560 --> 00:04:18,880
+to do a sequence of moves so that you get all of the numbers in order. And for those of you who know
+
+39
+00:04:18,880 --> 00:04:26,960
+this game, this example that I have on the slide is actually unsolved. There is no way you can
+
+40
+00:04:26,960 --> 00:04:34,000
+flip the order in 15 of 14 and 15 in this puzzle. And I have a link here if you want to actually
+
+41
+00:04:34,000 --> 00:04:40,880
+play the puzzle online which is pretty fun. So why do I do I start my talk by talking about
+
+42
+00:04:40,880 --> 00:04:47,360
+15 puzzle? It's because it's really I mean the way you solve the 15 puzzle tells you a lot about
+
+43
+00:04:47,920 --> 00:04:55,280
+the area of combinatorial reconfiguration. So the standard way we would think about the 15 puzzle
+
+44
+00:04:55,280 --> 00:05:00,480
+is by looking at the state space or what we call the reconfiguration graph of the 15 puzzle.
+
+45
+00:05:01,280 --> 00:05:07,840
+So what does that graph consist of? Well, we have one vertex or one node in this graph
+
+46
+00:05:07,840 --> 00:05:14,320
+for each possible configuration of the puzzle. So basically each possible configuration so it
+
+47
+00:05:14,320 --> 00:05:19,680
+would be a possible permutation of the 15 numbers in addition to where you're going to put the empty
+
+48
+00:05:19,680 --> 00:05:27,760
+square. Each one of those will be a vertex in the graph. And now we connect two vertices in that
+
+49
+00:05:27,760 --> 00:05:34,000
+graph whenever one can be reached from the other by a single move. And what do we mean here by a
+
+50
+00:05:34,000 --> 00:05:41,360
+single mover? It's basically just moving a number into the empty square. So if you look at the top
+
+51
+00:05:41,360 --> 00:05:47,600
+node here in this graph, there are four possibilities that you can do in one move which we call
+
+52
+00:05:47,600 --> 00:05:53,040
+a reconfiguration step which is you can move nine into the empty square. You can move three into
+
+53
+00:05:53,040 --> 00:06:00,320
+the empty square, 12 or 15. And that gives us basically four neighbors of that vertex in the graph.
+
+54
+00:06:01,680 --> 00:06:07,440
+Okay, and we call this whole graph the reconfiguration graph or the state space if you're more
+
+55
+00:06:07,440 --> 00:06:15,440
+comfortable thinking about states, the states of the game. So now given this graph, the reconfiguration
+
+56
+00:06:15,440 --> 00:06:21,200
+graph, there are tons of very interesting questions that you can ask about it. There are structural
+
+57
+00:06:21,200 --> 00:06:26,960
+questions and there are algorithms to make questions. And these are typically the types of questions
+
+58
+00:06:26,960 --> 00:06:35,040
+that we're interested in in this area of combinatorial reconfiguration. So a couple of examples of
+
+59
+00:06:35,040 --> 00:06:41,040
+structural questions would be, well, the simplest one would be how big is this reconfiguration graph?
+
+60
+00:06:41,040 --> 00:06:48,480
+Right? How many vertices or how many edges? And that's usually not a very hard question to answer
+
+61
+00:06:48,560 --> 00:06:54,640
+in terms of upper and lower ones. More interestingly, you could ask, is this reconfiguration graph
+
+62
+00:06:54,640 --> 00:07:01,680
+connected? Right? Or is, can I reach any state starting from any other state by a sequence of
+
+63
+00:07:01,680 --> 00:07:08,800
+legal moves? And as I told you before, for the 15 puzzle, the reconfiguration graph is definitely
+
+64
+00:07:08,800 --> 00:07:15,040
+not connected because there was no way to reverse 14 and 15 in the previous example that I showed
+
+65
+00:07:15,120 --> 00:07:20,400
+you and you can easily prove that, by the way. So when it's not connected, another question would be
+
+66
+00:07:20,400 --> 00:07:28,880
+how many components does it have? Is there some sort of a nice structure to the components of this graph?
+
+67
+00:07:30,000 --> 00:07:35,200
+And then another question would be what is the diameter of the circumfiguration graph or of
+
+68
+00:07:35,200 --> 00:07:39,680
+each one of its components? And that's usually a very important question to ask when you're dealing with
+
+69
+00:07:39,680 --> 00:07:46,880
+one player games because this could tell you like what would be the worst possible shortest path
+
+70
+00:07:46,880 --> 00:07:51,600
+to reach a target configuration or to solve your game, to win your game, for example.
+
+71
+00:07:52,160 --> 00:07:58,160
+And in the literature, this is sometimes known as God's number, which would be the diameter of
+
+72
+00:07:58,160 --> 00:08:04,400
+the reconfiguration graph. And these are all very interesting, very interesting structural questions
+
+73
+00:08:04,480 --> 00:08:11,680
+to ask about this reconfiguration graph. Now on the algorithmic side or the computational side,
+
+74
+00:08:11,680 --> 00:08:18,320
+there's the obvious question of if I'm given a starting state and some ending state or target state,
+
+75
+00:08:18,320 --> 00:08:23,520
+like in the case of the puzzle game, that I am given some starting state and we know what the
+
+76
+00:08:23,520 --> 00:08:29,520
+goal state is. So here one decision problem would be to answer the question whether it's possible to
+
+77
+00:08:29,600 --> 00:08:34,320
+get to the target state starting from some initial state that is also given to me.
+
+78
+00:08:35,840 --> 00:08:40,320
+So you can decide to solve this problem either as a decision problem or as a search problem,
+
+79
+00:08:40,320 --> 00:08:45,920
+which would give you the actual sequence of steps that will take you from a state to the target state.
+
+80
+00:08:49,760 --> 00:08:55,520
+Other interesting computational problems is it always possible to go from one configuration to
+
+81
+00:08:55,600 --> 00:09:01,200
+any other and this is basically also related to the structural question about connected components.
+
+82
+00:09:02,400 --> 00:09:09,120
+And the last question that I will mention, which is also interesting, is how fast can you go
+
+83
+00:09:09,120 --> 00:09:13,680
+from one configuration to another? Meaning can you do it in at most case steps?
+
+84
+00:09:14,560 --> 00:09:20,400
+There is a question I should wait or no.
+
+85
+00:09:25,280 --> 00:09:33,520
+All right. So think about all of these questions that we paused using the simple 15 puzzle game.
+
+86
+00:09:34,080 --> 00:09:40,160
+And now we're going to look at a lot of other possible problems where the same
+
+87
+00:09:40,160 --> 00:09:45,760
+any configuration graph can be extracted. And we can ask the same set of questions.
+
+88
+00:09:46,800 --> 00:09:52,400
+So all of you here are familiar with the case sad problem. So you're given a Boolean formula and
+
+89
+00:09:52,400 --> 00:09:58,960
+you want to know if you can satisfy this formula by assigning values to the variables. And we know
+
+90
+00:09:58,960 --> 00:10:04,880
+that this is NP complete for K greater than or equal to three. So now how can you transform this
+
+91
+00:10:04,880 --> 00:10:10,080
+into a reconfiguration problem? Well, it's very simple. So now you're given a formula
+
+92
+00:10:11,440 --> 00:10:16,720
+and you're given two satisfying assignments. So you can think of those satisfying assignments as
+
+93
+00:10:16,720 --> 00:10:24,480
+bit vectors. And so now the question that you can ask is can I go from the first satisfying assignment
+
+94
+00:10:24,480 --> 00:10:32,800
+as to the next one? By basically flipping one bit at a time, under the condition that I remain
+
+95
+00:10:32,800 --> 00:10:39,200
+a satisfying assignment at all times. And notice that without this condition, the problem is trivial.
+
+96
+00:10:40,880 --> 00:10:48,080
+So you can basically just flip the bits however you like and reach S from T or T from S. But once
+
+97
+00:10:48,080 --> 00:10:54,400
+you add this constraint of you should remain a satisfying assignment, the problem becomes way
+
+98
+00:10:54,400 --> 00:11:01,520
+more interesting. And you can think of this problem again as walking in the solution space of the
+
+99
+00:11:01,600 --> 00:11:11,520
+given formula of all the satisfying assignment of the formula. All right, so that's the sad reconfiguration
+
+100
+00:11:11,520 --> 00:11:20,400
+problem. Let's look at another example. Graph coloring. We all know it. We all love it. You're
+
+101
+00:11:20,400 --> 00:11:26,320
+given a graph and some integer K and you are asked whether you can properly take color the
+
+102
+00:11:26,320 --> 00:11:30,560
+graph G. And we know again that this is NP complete for K greater than or equal to three.
+
+103
+00:11:31,120 --> 00:11:36,800
+How do you transform that into a reconfiguration problem? Well, now you're given a graph,
+
+104
+00:11:36,800 --> 00:11:44,000
+you're given two colorings of the graph, alpha and beta. And the question is can you recolor alpha
+
+105
+00:11:44,000 --> 00:11:51,040
+to get the to beta? But you need to recolor one vertex at a time and you need to remain a proper
+
+106
+00:11:51,040 --> 00:11:58,640
+K coloring throughout. Same idea again leads us to this notion of the reconfiguration space
+
+107
+00:11:58,640 --> 00:12:03,360
+where we are looking at the K colorings of the graph and how they are connected
+
+108
+00:12:04,320 --> 00:12:09,200
+under this adjacent simulation that we define, which is a single vertex recoloring.
+
+109
+00:12:11,920 --> 00:12:17,280
+The final example that I will mention, which will be basically what we will focus on in the rest of
+
+110
+00:12:17,280 --> 00:12:23,440
+the talk is token placement. I call it, but as you will all guess, this is the famous independent
+
+111
+00:12:23,440 --> 00:12:29,360
+set problem. But we will look at it as a token placement problem because it will be more useful
+
+112
+00:12:29,360 --> 00:12:34,080
+for the rest of the talk. So you're given a graph G and an integer K. And the question is,
+
+113
+00:12:34,080 --> 00:12:40,640
+can you place K tokens on your graph K black tokens so that no two of these tokens share an edge.
+
+114
+00:12:40,640 --> 00:12:46,640
+And of course, we all know that this is an NP complete problem. So how can you transform this
+
+115
+00:12:46,640 --> 00:12:52,480
+problem into a reconfiguration problem? Again, now I'm giving a graph two independent sets of the graph.
+
+116
+00:12:54,160 --> 00:12:58,800
+Each of size K. And the question is, can I go from one independent set to the other
+
+117
+00:13:00,320 --> 00:13:07,440
+under what rule? So here defining the rule for independent set, how can I go between consecutive
+
+118
+00:13:07,440 --> 00:13:14,160
+independent sets becomes a little bit less obvious. And there are two main strategies that people
+
+119
+00:13:14,160 --> 00:13:21,040
+have attempted. So the first rule is what we call token jumping. So you are basically allowed to
+
+120
+00:13:21,040 --> 00:13:27,760
+take any token on your graph and jump it to any other vertex on the graph, assuming that it doesn't
+
+121
+00:13:27,760 --> 00:13:35,760
+have a token and that you maintain an independent set at all times. So for example, in this example that
+
+122
+00:13:35,760 --> 00:13:41,840
+I have here, it would be perfectly okay to take this token here and jump it to this vertex here.
+
+123
+00:13:41,840 --> 00:13:52,080
+Or I could also take this token here and jump it to this vertex here. So that, no, actually that
+
+124
+00:13:52,080 --> 00:13:59,280
+would violate the independence. So you can jump to any other vertex as long as you maintain independence.
+
+125
+00:13:59,280 --> 00:14:06,720
+And we call that the token jumping rule. The other rule is basically token sliding. So in this case,
+
+126
+00:14:06,720 --> 00:14:15,920
+we only allow a token to slide along edges of the graph. So a token can only move to adjacent
+
+127
+00:14:15,920 --> 00:14:22,560
+vertex, assuming of course, this does not violate independence. So now we have two different
+
+128
+00:14:22,560 --> 00:14:27,360
+reconfiguration graphs we can think about. We can think about the reconfiguration graph under the
+
+129
+00:14:27,360 --> 00:14:32,800
+token jumping adjacency. And we can think about the reconfiguration graph under the token sliding
+
+130
+00:14:32,800 --> 00:14:39,120
+adjacency. And we're going to talk about these two different problems because they do actually
+
+131
+00:14:39,120 --> 00:14:46,000
+behave quite differently and they produce quite interesting results like the difference between the two.
+
+132
+00:14:46,000 --> 00:14:51,840
+We don't fully understand yet, but we kind of know that token sliding can be harder than token
+
+133
+00:14:51,840 --> 00:15:00,560
+jumping. But there's still a lot of questions to be answered. All right. So some of you might be asking,
+
+134
+00:15:00,560 --> 00:15:08,480
+why do we care about studying such problems? There's a lot of motivations out there. I mean,
+
+135
+00:15:09,600 --> 00:15:15,120
+sometimes I would say you don't need motivation. They're interesting. There's a lot of open
+
+136
+00:15:15,120 --> 00:15:20,720
+questions that we need to answer. But you can also think about reconfiguration problems as another
+
+137
+00:15:20,720 --> 00:15:26,560
+way of modeling real world algorithmic problems because you usually never start from scratch.
+
+138
+00:15:27,120 --> 00:15:32,080
+When you're trying to solve real world problems, you usually start from something and you're trying
+
+139
+00:15:32,080 --> 00:15:37,760
+to prove it or make it better or change it to something more appropriate. Another very good
+
+140
+00:15:38,640 --> 00:15:44,720
+application of studying these problems is that they give you a better understanding of solution
+
+141
+00:15:44,720 --> 00:15:50,960
+spaces, which can be very important for other areas as well. And they have been used in statistical
+
+142
+00:15:50,960 --> 00:15:57,520
+physics, quantum computing, any complexity theory, combinatorics, and robotics, and hopefully many more
+
+143
+00:15:57,520 --> 00:16:03,200
+applications to come. But what I would tell you is that there are so many very interesting problems
+
+144
+00:16:03,200 --> 00:16:08,800
+that are so easy to start thinking about without having too much background, which is what I think
+
+145
+00:16:08,800 --> 00:16:15,120
+this is a very nice area to start working on at any level in your research career.
+
+146
+00:16:15,200 --> 00:16:25,200
+All right, so I'll take a break here and take questions if there are any. And then we will dive into
+
+147
+00:16:25,200 --> 00:16:32,640
+the token jumping and token sliding problems, what we know about them in terms of classical complexity,
+
+148
+00:16:32,640 --> 00:16:37,280
+and what was basically the starting point for the project that led us to this paper.
+
+149
+00:16:37,760 --> 00:16:41,920
+Any questions at this point?
+
+150
+00:16:45,200 --> 00:16:51,600
+I'm, I apologize for the small context, which I am in interrupting here. So this is just to
+
+151
+00:16:51,600 --> 00:16:57,680
+announce for the PC301 workshop that will be happening in December end. And this will be slightly
+
+152
+00:16:57,680 --> 00:17:03,120
+different from the previous two workshops. First major difference, this will be online. Second is
+
+153
+00:17:03,760 --> 00:17:11,840
+some advanced topics, what we discuss. So anyone who intends to explore somewhat more complex
+
+154
+00:17:11,840 --> 00:17:18,480
+topics in parametrize algorithms is invited to have a check. They can look at the website that
+
+155
+00:17:18,480 --> 00:17:23,200
+has been shared on the chat. And if you wish, you can register simply by filling a form that is
+
+156
+00:17:24,400 --> 00:17:30,480
+linked at the bottom of the webpage. So just to inform you all about it. And sorry for the
+
+157
+00:17:30,480 --> 00:17:42,000
+introduction for this now. All right. All right. So let's start talking about token jumping,
+
+158
+00:17:42,000 --> 00:17:48,080
+token sliding, and a little bit about classical complexity. I know everybody here knows about
+
+159
+00:17:48,080 --> 00:17:53,120
+P and NPs. So I'm not going to talk about this. Some of you might not be familiar with the
+
+160
+00:17:53,120 --> 00:17:59,520
+P space class. So just a quick note that's as much as you will need to know for this talk is that
+
+161
+00:17:59,520 --> 00:18:05,840
+P space is the set of all decision problems that can be solved using a polynomial amount of space.
+
+162
+00:18:06,720 --> 00:18:13,360
+And the reason why I mentioned this class is because many many many many the configuration problem
+
+163
+00:18:13,360 --> 00:18:20,400
+actually are P space complete. Okay. And so so what we know the standard inclusion is we know that
+
+164
+00:18:20,400 --> 00:18:26,480
+P is contained in NP, which is contained in P space. But a very useful thing about P space is
+
+165
+00:18:26,480 --> 00:18:34,080
+that savage prove that it's equal to NP space. So polynomial space and non deterministic polynomial
+
+166
+00:18:34,080 --> 00:18:41,040
+space are the same class. Basically, and that's extremely useful when you start to think about
+
+167
+00:18:41,040 --> 00:18:45,760
+reconfiguration problems because if you think about reconfiguration problem where you're given some
+
+168
+00:18:45,760 --> 00:18:53,520
+state and you want to reach the other one. So basically you can solve that easily and non deterministic
+
+169
+00:18:53,520 --> 00:19:02,400
+polynomial space, which basically implies that they are NP space. But actually you can show a lot
+
+170
+00:19:02,400 --> 00:19:08,160
+more than that. You can show that many really many reconfiguration problems are actually P space
+
+171
+00:19:08,160 --> 00:19:13,760
+complete, which is not surprising. Right. The fact that many of these reconfiguration problems are
+
+172
+00:19:13,760 --> 00:19:22,640
+P space complete is not very surprising. Right. And then not being in NP is because they don't always
+
+173
+00:19:22,640 --> 00:19:28,560
+have polynomial size certificates, which also makes sense because sometimes the number of steps
+
+174
+00:19:28,560 --> 00:19:34,080
+that you need to take to go from one configuration to the other might very well be exponential in the
+
+175
+00:19:34,080 --> 00:19:41,120
+graph. But there are also some extremely surprising results. And these are some of the results some of
+
+176
+00:19:41,120 --> 00:19:48,640
+my favorite results in the area. So for example, you all know that coloring is NP complete even for
+
+177
+00:19:48,880 --> 00:19:56,320
+K equals three. However, it turns out that if you try to solve the recoloring problem for K equals
+
+178
+00:19:56,320 --> 00:20:02,640
+three, it's actually polynomial time solvable. So if I give you two three colorings of a graph and
+
+179
+00:20:02,640 --> 00:20:09,680
+I ask you, is there a path between them that recolors one vertex at a time and never is and is
+
+180
+00:20:09,680 --> 00:20:15,840
+always a valid three coloring, then this problem can be solved in polynomial time. And the recoloring
+
+181
+00:20:15,840 --> 00:20:23,600
+problem only becomes P space complete for K equals four and more. Right. So that's the first
+
+182
+00:20:24,480 --> 00:20:31,760
+surprising result. Another very surprising result is that as as your all FBT experts here, I know
+
+183
+00:20:31,760 --> 00:20:37,440
+that you're all familiar with the fact that usually when we study problems on graphs of bounded bucket
+
+184
+00:20:37,760 --> 00:20:46,080
+path with tree width, they tend to become easier. It turns out that that's not really the case
+
+185
+00:20:46,800 --> 00:20:51,360
+for reconfiguration problems, at least for token sliding and jumping, which is the two problems
+
+186
+00:20:51,360 --> 00:20:57,280
+that are related to independent set. It turns out that those two problems remain P space complete
+
+187
+00:20:57,280 --> 00:21:03,440
+even if you have a graph of constant tree width or path width or even bucket width. So a very,
+
+188
+00:21:03,440 --> 00:21:08,640
+very, very simple graph structure still the problem remains hard.
+
+189
+00:21:11,120 --> 00:21:18,560
+All right. And finally, the last theorem that I also like a lot shows you basically that
+
+190
+00:21:18,560 --> 00:21:26,160
+sliding and jumping behave differently. And it was shown that if you restrict yourself to
+
+191
+00:21:26,160 --> 00:21:31,440
+bipartite graphs, where we know that max and independent set can be solved in polynomial time,
+
+192
+00:21:32,240 --> 00:21:38,560
+if you restrict yourself to those graphs, it turns out that token jumping is NP complete,
+
+193
+00:21:39,760 --> 00:21:46,400
+whereas token sliding is P space complete, which is a which is a strange
+
+194
+00:21:48,480 --> 00:21:50,880
+difference between the behavior of those two problems.
+
+195
+00:21:54,240 --> 00:21:54,640
+All right.
+
+196
+00:21:55,120 --> 00:22:04,080
+So in fact, we know a lot more about token sliding and token jumping. These problems have been
+
+197
+00:22:04,080 --> 00:22:08,960
+at the heart of the area of combinatorial reconfiguration. They have been studied so much.
+
+198
+00:22:09,920 --> 00:22:15,120
+And we know so much about them at least in terms of standard or classical complexity.
+
+199
+00:22:15,680 --> 00:22:22,160
+So some of the important results for our paper that we're going to focus on
+
+200
+00:22:22,880 --> 00:22:30,080
+is this result. So that's going to be the starting point of the results that we will discuss
+
+201
+00:22:30,080 --> 00:22:35,040
+next when we move to parametrize complexity. So the fact that token sliding and token jumping
+
+202
+00:22:36,640 --> 00:22:41,520
+are b space complete and then NP complete respectively on bipartite graphs was the starting
+
+203
+00:22:41,520 --> 00:22:46,320
+point of our next paper. But there are some very interesting results here that are also worth
+
+204
+00:22:46,320 --> 00:22:51,600
+mentioning. So for example, for even whole figure halves, we know how to solve token jumping
+
+205
+00:22:51,600 --> 00:22:58,240
+in polynomial time. But the complexity of independent set even remains open on this class of graphs.
+
+206
+00:22:59,600 --> 00:23:05,360
+And the complexity of token sliding also remains open. So we don't know how to check if given
+
+207
+00:23:05,360 --> 00:23:11,440
+two independent sets, I can slide one to the other. Can you answer that question in polynomial
+
+208
+00:23:11,440 --> 00:23:18,880
+time for even whole free graphs? For split graphs and chordal graphs, they also behave
+
+209
+00:23:18,880 --> 00:23:24,320
+extremely differently token sliding and token jumping. So they are token sliding is p space
+
+210
+00:23:24,320 --> 00:23:29,600
+complete on split graphs and chordal graphs while token jumping is polynomial time.
+
+211
+00:23:30,800 --> 00:23:38,160
+And that is some of the reasons why we feel that token sliding is harder usually than token jumping.
+
+212
+00:23:38,160 --> 00:23:48,480
+But it's not always the case. All right. So that's it for classical complexity.
+
+213
+00:23:49,840 --> 00:23:55,920
+So now let's move on to parameterized complexity. And let's basically think about how you can
+
+214
+00:23:55,920 --> 00:24:04,080
+parameterize those two problems, token jumping and token sliding. So the obvious parameter would be
+
+215
+00:24:04,080 --> 00:24:09,280
+the number of tokens. So one of the obvious parameters would be the number of tokens. So
+
+216
+00:24:10,320 --> 00:24:15,440
+and we're going to denote that by K. Another parameter would be the length of the sequence.
+
+217
+00:24:15,440 --> 00:24:20,000
+Like how many steps does it take to go from one independent set to the other?
+
+218
+00:24:20,880 --> 00:24:25,600
+You can also obviously parameterize by tree width or path width or any combination of the above.
+
+219
+00:24:26,880 --> 00:24:34,080
+When we started working on this problem, our initial aim was to basically study the
+
+220
+00:24:34,080 --> 00:24:40,160
+parameterized complexity of token sliding and token jumping on bipartite graphs using the parameter
+
+221
+00:24:40,160 --> 00:24:46,320
+K number of tokens. Right? Because remember, we saw that token sliding is piece-based
+
+222
+00:24:46,320 --> 00:24:53,120
+complete on bipartite graphs and token jumping is NP. So you were interested to see if basically
+
+223
+00:24:53,120 --> 00:24:59,120
+this is going to give us W1 hardness for token sliding and FPTNES for token jumping.
+
+224
+00:25:00,800 --> 00:25:05,440
+All right. At least that was the initial hope. That's why we started working on this project.
+
+225
+00:25:06,160 --> 00:25:12,000
+We weren't able to answer the two questions. So we were able to answer one side of the question,
+
+226
+00:25:12,720 --> 00:25:20,720
+which is we were able to show that on bipartite graphs, token sliding is in fact W1 hardness.
+
+227
+00:25:22,320 --> 00:25:28,160
+So token sliding parameterized by the number of tokens on bipartite graphs is W1 hard.
+
+228
+00:25:28,720 --> 00:25:35,120
+We were not able to answer the question for token jumping. So that is still an open question.
+
+229
+00:25:36,000 --> 00:25:42,800
+So having answered that question and failed on the next question, we started thinking about ways
+
+230
+00:25:42,800 --> 00:25:49,760
+to basically simplify a little bit some of these questions. So the next thing we asked ourselves,
+
+231
+00:25:49,760 --> 00:25:56,320
+so there are two directions where you can try and simplify. So the next thing we asked
+
+232
+00:25:56,320 --> 00:26:02,480
+ourselves was, okay, so from bipartite graphs, how can I go to other classes of graphs
+
+233
+00:26:03,200 --> 00:26:11,200
+and see where token jumping becomes hard or easy? And it turned out that if you basically exclude
+
+234
+00:26:11,200 --> 00:26:21,120
+only C4 from your graph, right? And so we, because in bipartite graphs, you're excluding all odd cycles.
+
+235
+00:26:22,640 --> 00:26:28,160
+Right. So, and we started thinking about what kinds of cycles affect the behavior of those
+
+236
+00:26:28,160 --> 00:26:33,520
+problems? So the first question was, what about C4 free graphs? And it turned out that both
+
+237
+00:26:33,520 --> 00:26:42,720
+problems remained W1 hard on C4 free graphs. Now, if you exclude C3 and C4, it turns out that
+
+238
+00:26:42,720 --> 00:26:49,920
+token jumping becomes FPD has an order K squared kernel. But for token sliding, we were not able
+
+239
+00:26:50,560 --> 00:26:57,760
+to determine the complexity. Now, if you go to the other side of that,
+
+240
+00:26:58,400 --> 00:27:07,280
+so what if we enforce both bipartiteness as well as C4 freeness? So in that case, we were able to
+
+241
+00:27:07,280 --> 00:27:16,880
+show that both problems became FPD. Okay. And basically, the bipartite bounded degree graphs was
+
+242
+00:27:16,880 --> 00:27:25,200
+just a stepping stone to get to the bipartite C4 free graph result. So let me, let me repeat that
+
+243
+00:27:25,200 --> 00:27:30,880
+maybe slightly more clearly. So after basically answering the first question, which was bipartite
+
+244
+00:27:30,880 --> 00:27:36,160
+graphs, we were able to show that token sliding was W1 hard, but we were not able to determine
+
+245
+00:27:36,160 --> 00:27:43,120
+the complexity of token jumping. So then we went to C4 free graphs and we were able to show that both
+
+246
+00:27:43,120 --> 00:27:50,640
+problems are actually W1 hard. Then if we added one more constraint, which was C3 C4 free graphs,
+
+247
+00:27:50,640 --> 00:27:55,280
+we got FPDness for token jumping, but it remained open for token sliding.
+
+248
+00:27:56,400 --> 00:28:02,960
+And on the other side of the spectrum, so if we keep bipartite and enforce the C4 freeness,
+
+249
+00:28:02,960 --> 00:28:13,760
+we get FPD for both problems. And as a side note, this blue result is not part of our paper. This
+
+250
+00:28:13,760 --> 00:28:22,880
+was known prior to our paper. So any questions about the results?
+
+251
+00:28:22,880 --> 00:28:49,200
+No questions. All right. Cool. So lots of open problems. The first and obvious one is,
+
+252
+00:28:49,840 --> 00:28:54,640
+what is the pattern is token jumping FPD, parameterized by K on bipartite graphs.
+
+253
+00:28:55,280 --> 00:29:01,360
+And that's really, I mean, that was the initial question that we set out to answer and couldn't.
+
+254
+00:29:01,360 --> 00:29:12,640
+So that remains open. And it's, so I will not be going over the hardness reduction for token sliding
+
+255
+00:29:12,640 --> 00:29:18,320
+on bipartite graphs because it's quite technical. I don't feel a talk is the right place to go over it.
+
+256
+00:29:19,520 --> 00:29:27,120
+But if you go over the reduction, you will see that that it's the two problems really behave
+
+257
+00:29:27,120 --> 00:29:32,240
+differently. And there that doesn't seem to be a chance to basically make the same type of
+
+258
+00:29:32,240 --> 00:29:39,920
+reduction work for token jumping. So the second interesting open question is, how about token jumping
+
+259
+00:29:39,920 --> 00:29:45,920
+parameterized by K on triangle free graphs? That's basically even more general than question one.
+
+260
+00:29:46,880 --> 00:29:53,360
+Right. So, and the reason why I mentioned this question separately is because almost every reduction
+
+261
+00:29:53,360 --> 00:30:01,280
+that I know of includes large clicks. So you need to use large clicks in your reductions. So how about
+
+262
+00:30:01,280 --> 00:30:08,080
+if we don't allow triangle and large clicks? So can we can we can we then say something about the problem?
+
+263
+00:30:08,960 --> 00:30:16,320
+So that's for token jumping. Now, when it when you go to token sliding. So, so the open problem is
+
+264
+00:30:17,280 --> 00:30:23,520
+what happens for token sliding on graphs of girth at least five, so if they are C3, C4 free.
+
+265
+00:30:24,240 --> 00:30:31,440
+Or you can even make that a bit weaker and ask for any girth of at least P for some constant P.
+
+266
+00:30:33,840 --> 00:30:37,200
+And for all of these questions, of course, polynomial kernels.
+
+267
+00:30:38,560 --> 00:30:44,800
+Would be interesting as well because in our case, we do get polynomial kernels for the FB.
+
+268
+00:30:47,600 --> 00:30:53,360
+And the polynomials are not great, but polynomial regardless.
+
+269
+00:30:56,640 --> 00:31:03,680
+All right. So, in the rest of the talk, I will try to cover some of the technical stuff.
+
+270
+00:31:03,680 --> 00:31:09,360
+And as promised, I will try to keep it as light as possible so that I can give you some of a lot
+
+271
+00:31:09,360 --> 00:31:15,920
+of the intuition and techniques that are used in this paper and that are generally used when
+
+272
+00:31:15,920 --> 00:31:22,160
+dealing with reconfiguration problems. So the first result that we will go over is this W hardness
+
+273
+00:31:22,160 --> 00:31:28,560
+on C4 free graphs. Right. For both token sliding and token jumping. It's the same reduction and
+
+274
+00:31:29,520 --> 00:31:35,600
+you will get both results because we will be using maximum independent sets.
+
+275
+00:31:36,480 --> 00:31:43,120
+So if you're trying to basically do token sliding from one maximum independent set to the other,
+
+276
+00:31:43,760 --> 00:31:48,880
+or token jumping, these two rules become equivalent. Jumping becomes equivalent to sliding.
+
+277
+00:31:49,520 --> 00:31:54,400
+So when you're dealing with maximum independent sets, these two basically rules are the same.
+
+278
+00:31:55,360 --> 00:31:59,440
+And that's what we're going to do. But what we're going to prove actually is a stronger
+
+279
+00:31:59,440 --> 00:32:05,200
+theorem. What we're going to prove is the following theorem. If you take any p greater than or
+
+280
+00:32:05,200 --> 00:32:15,200
+equal to four, then both problems are W hard on C4, C5 dot dot dot up to CP free graphs,
+
+281
+00:32:15,920 --> 00:32:27,120
+which implies of course C4 free graphs. But you can basically exclude any cycles from C4 up to CP
+
+282
+00:32:27,120 --> 00:32:30,640
+for constant P and the problems will remain W1 hard.
+
+283
+00:32:36,960 --> 00:32:43,520
+So how do we prove this result? In fact, we use a known reduction from a problem known as grid
+
+284
+00:32:43,520 --> 00:32:51,440
+tiling, which is a W1 hard problem. And grid tiling is reduced to the independent set problem
+
+285
+00:32:51,440 --> 00:33:00,320
+on C4 up to CP free graphs. And that reduction was used to show that independent set remains
+
+286
+00:33:00,320 --> 00:33:09,360
+W1 hard if you exclude C4 up to CP for any constant P. But what is interesting and useful in that
+
+287
+00:33:09,360 --> 00:33:16,160
+reduction is the graph that is obtained from the reduction. So the graph that is obtained from
+
+288
+00:33:16,160 --> 00:33:22,640
+the reduction has three properties that are going to be useful to us. The first property is that
+
+289
+00:33:22,640 --> 00:33:31,680
+you can partition the graph into basically 8k squared into P plus 1 clicks. So you have a bunch of
+
+290
+00:33:31,680 --> 00:33:36,880
+clicks each of size n and all of the edges basically are between the clicks.
+
+291
+00:33:38,960 --> 00:33:44,560
+But that's it, that's it, that's the whole of the graph. It's a bunch of clicks and edges between them.
+
+292
+00:33:45,680 --> 00:33:52,480
+Of course, the more important property as well here is that this graph is going to be C4 up to CP free.
+
+293
+00:33:52,880 --> 00:34:03,040
+It will not have any of those cycles as an induced sub graph. And it's an equivalent instance to
+
+294
+00:34:03,040 --> 00:34:11,200
+the grid tiling. And that basically gives you a W1 hardness of independent set on this class of graphs.
+
+295
+00:34:13,360 --> 00:34:19,600
+So notice in this case that an independent set of size 8k squared into P plus 1 will have to
+
+296
+00:34:19,600 --> 00:34:23,760
+be a maximum independent set because that's how many clicks we get in the resulting graph.
+
+297
+00:34:24,480 --> 00:34:29,920
+And that's basically the sizes that we will be working with, more or less up to some modifications.
+
+298
+00:34:30,400 --> 00:34:38,080
+But this will allow us to basically conclude that both sliding and jumping are hard on this class of
+
+299
+00:34:38,080 --> 00:34:48,480
+graphs. So how do we use this for showing hardness of token sliding and token jumping? And let's
+
+300
+00:34:48,480 --> 00:34:54,480
+focus on token sliding for now because it's going to be the same anyway. So we have those clicks
+
+301
+00:34:55,040 --> 00:35:02,080
+and some edges that go between the clicks. So the first attempt would be as follows. We will add
+
+302
+00:35:02,800 --> 00:35:08,640
+a universal vertex to each one of the clicks and we will call this the starting set or the starting
+
+303
+00:35:08,640 --> 00:35:14,560
+independent set. And then we add another universal vertex to each one of the clicks and call this
+
+304
+00:35:14,640 --> 00:35:20,400
+the target independent set. And now basically we have our instance of token sliding. We want to
+
+305
+00:35:20,400 --> 00:35:30,160
+slide everybody in S down to T. So notice that this is useful because we don't introduce any of the
+
+306
+00:35:30,160 --> 00:35:37,680
+forbidden cycles. So we are still fine. And if we could guarantee that all of the tokens
+
+307
+00:35:37,680 --> 00:35:44,480
+will be on the on the clicks simultaneously, then this will imply an independent set in the
+
+308
+00:35:44,480 --> 00:35:50,800
+original graph, which concludes our proof. But unfortunately in this case, we definitely cannot
+
+309
+00:35:50,800 --> 00:35:58,640
+conclude that because each rent token can slide independently here and then here and then the
+
+310
+00:35:58,640 --> 00:36:05,040
+next one can follow, etc, etc, etc. So you need some way of forbidden, are forbidding
+
+311
+00:36:06,000 --> 00:36:14,400
+the tokens to behave freely. We want to make sure that they will all be inside the clicks simultaneously
+
+312
+00:36:14,400 --> 00:36:19,760
+and we will be done. And notice that we're going to have 8k squared and 2p plus 1 tokens, right?
+
+313
+00:36:19,760 --> 00:36:27,200
+1 for each click and 2 universal vertices for each click. So how do we fix this time of 1080
+
+314
+00:36:27,760 --> 00:36:35,760
+issue? Well, here's how we can do it. So instead of simply adding universal vertices,
+
+315
+00:36:36,560 --> 00:36:42,240
+we're also going to add an edge between every two universal vertices of a click. And then we're
+
+316
+00:36:42,240 --> 00:36:49,600
+going to add something that we call a switch. And in this case, it's a simple edge. And the red token
+
+317
+00:36:50,160 --> 00:36:57,440
+needs to go to the blue position. Right? So now we have one extra token inside our graph.
+
+318
+00:36:57,440 --> 00:37:08,400
+But now notice what happens. If any red token wants to come to the blue position, then this red token
+
+319
+00:37:08,400 --> 00:37:14,720
+needs to be moved to this position before. And if you move that token up to the blue position,
+
+320
+00:37:14,800 --> 00:37:20,320
+then you can no longer have any of the red tokens on the universal vertices, which means that they
+
+321
+00:37:20,320 --> 00:37:27,360
+will all have to be simultaneously inside the clicks. And now we get the behavior that we want.
+
+322
+00:37:29,360 --> 00:37:34,560
+So now we can guarantee that if there is a sequence that takes the red tokens to the blue position,
+
+323
+00:37:36,000 --> 00:37:43,040
+then somewhere along that sequence, the tokens are all going to be within the clicks. Unfortunately,
+
+324
+00:37:43,040 --> 00:37:48,720
+what happened here is we might have introduced some of the forbidden cycles. We can no longer
+
+325
+00:37:48,720 --> 00:37:56,960
+guarantee that this is C4 up to CP3. So what you can do in this case to solve this problem,
+
+326
+00:37:56,960 --> 00:38:02,720
+and I'm not going to go into the details, but the intuition should be pretty clear, is that you can
+
+327
+00:38:02,720 --> 00:38:09,280
+subdivide those edges, make them long enough so that you don't introduce any forbidden cycles,
+
+328
+00:38:09,360 --> 00:38:13,040
+and add appropriate tokens inside of them to get the same behavior.
+
+329
+00:38:15,200 --> 00:38:19,760
+Because notice that the number of such edges is bounded by a function of K,
+
+330
+00:38:20,640 --> 00:38:24,400
+by a function of yes K and P. This case.
+
+331
+00:38:26,240 --> 00:38:33,040
+Right, so you can make these edges subdivide them as many times as needed, add as many tokens
+
+332
+00:38:33,040 --> 00:38:37,920
+as needed to maintain all the properties that we need, and to maintain that we're going from one
+
+333
+00:38:37,920 --> 00:38:44,720
+maximum independent set to the other, which will give you W1 hardness for both token sliding as well
+
+334
+00:38:44,720 --> 00:38:55,200
+as token jumping. All right, questions?
+
+335
+00:38:55,360 --> 00:39:10,720
+No questions? All right, so let's keep going.
+
+336
+00:39:13,680 --> 00:39:17,600
+So now I'm going to talk about some positive result.
+
+337
+00:39:18,000 --> 00:39:23,040
+So the result that I'm going to talk about is this one here.
+
+338
+00:39:23,920 --> 00:39:33,120
+Right, so I'm going to show you that on C3, C4 free graphs, token jumping is actually FPD and has
+
+339
+00:39:33,120 --> 00:39:38,400
+a quadratic kernel, but again, what we will show is a stronger result.
+
+340
+00:39:39,360 --> 00:39:48,880
+So what we will show is the following theorem. What we will show is can be summarized as follows.
+
+341
+00:39:48,880 --> 00:39:55,440
+So if you look at any graph or at any instance of the token jumping problem.
+
+342
+00:39:55,440 --> 00:40:00,800
+So remember, an instance of token jumping has the input graph, the starting set, the target set,
+
+343
+00:40:00,800 --> 00:40:09,920
+and K as the number of tokens. So let me try and draw something here. So if you look at
+
+344
+00:40:11,040 --> 00:40:16,160
+your graph, you can kind of decompose it into something which is more or less as follows.
+
+345
+00:40:17,120 --> 00:40:21,760
+So you have S, you have T, the intersection need not be empty,
+
+346
+00:40:23,280 --> 00:40:26,640
+and then you have the neighborhood of S union T,
+
+347
+00:40:26,800 --> 00:40:30,480
+and then you have the rest of the graph.
+
+348
+00:40:33,040 --> 00:40:39,360
+So we're going to call the rest of the graph H, and we're going to call the close neighborhood
+
+349
+00:40:39,360 --> 00:40:46,320
+of S union D, or if you will, this yellow part here, we call that J.
+
+350
+00:40:47,120 --> 00:40:52,080
+Right, so we can think of our problem of our graph as being decomposed into those two areas.
+
+351
+00:40:52,640 --> 00:40:58,560
+H and J. Okay, so the theorem states the following.
+
+352
+00:40:59,520 --> 00:41:06,480
+If H is epsilon sparse, where epsilon sparse means that the number of edges is at most
+
+353
+00:41:06,480 --> 00:41:15,680
+n squared minus epsilon, positive epsilon. So if H is epsilon sparse, and J is C3C for free,
+
+354
+00:41:16,480 --> 00:41:24,400
+then the problem admits a kernel, which is that big, K squared plus K into 1 plus 1 over epsilon.
+
+355
+00:41:25,280 --> 00:41:34,640
+So notice now that we only need that H is epsilon sparse, and we only require C3C for
+
+356
+00:41:34,720 --> 00:41:41,360
+freeness inside J, which is S union T close neighborhood of S union T.
+
+357
+00:41:45,120 --> 00:41:50,320
+And this idea is actually is not a new idea. So this idea is,
+
+358
+00:41:51,600 --> 00:41:55,920
+okay, I had the drawing here, I should have used it. So the idea comes from,
+
+359
+00:41:55,920 --> 00:42:02,160
+from has been used before, and it's what we call the buffer technique for the token jumping problem.
+
+360
+00:42:02,240 --> 00:42:08,880
+And the intuition behind the buffer technique is very simple. So if I have S union T, but somewhere
+
+361
+00:42:09,760 --> 00:42:15,120
+in the graph, which is not in the close neighborhood of S union T, I have a case sized
+
+362
+00:42:15,120 --> 00:42:21,360
+independent set, then you are done. Right, if I have a case sized independent set in H,
+
+363
+00:42:22,880 --> 00:42:28,720
+then you're done. You can basically take all the tokens on S, jump them into those
+
+364
+00:42:29,360 --> 00:42:32,960
+independent yellow vertices in H, and then jump them back to T.
+
+365
+00:42:34,480 --> 00:42:39,120
+So in some sense, when H has a large independent set, that's the easy case.
+
+366
+00:42:40,880 --> 00:42:44,960
+Right, you're done. If you can find a large enough independent set in H, you're done.
+
+367
+00:42:46,240 --> 00:42:50,960
+And that's what we call the buffer technique, because it's been also used to show that the problem
+
+368
+00:42:50,960 --> 00:42:58,160
+is FBT on planar graphs, for example, or K3J free graphs. So graphs without large bi-clips.
+
+369
+00:42:59,280 --> 00:43:12,720
+So it's a well-known technique. All right. So what do we show? So we're going to use the buffer technique,
+
+370
+00:43:12,720 --> 00:43:20,480
+and we're going to combine it with something else. So we show that you have a yes instance
+
+371
+00:43:21,440 --> 00:43:29,760
+whenever one of those two conditions is true. The first condition is that H is epsilon sparse and
+
+372
+00:43:29,760 --> 00:43:38,320
+contains more than this many vertices. And this is relatively easy. When you contain this
+
+373
+00:43:38,320 --> 00:43:43,680
+many vertices and you add epsilon sparse, then you will have a case size independent set.
+
+374
+00:43:43,680 --> 00:43:49,440
+And that's basically the buffer technique. When H is epsilon sparse and has that many vertices
+
+375
+00:43:49,440 --> 00:43:54,000
+or more, then H is guaranteed to have an independent set of sparse and you're done.
+
+376
+00:43:55,520 --> 00:44:02,000
+So now you are stuck with what happens inside J, or the closed neighborhood of S-Union T.
+
+377
+00:44:02,560 --> 00:44:09,920
+And it turns out there, if you have C3C for freeness, the only thing you need on top of that,
+
+378
+00:44:09,920 --> 00:44:14,080
+to guarantee a yes instance, is a vertex of degree at least 3K.
+
+379
+00:44:14,560 --> 00:44:24,880
+So if you have C3C for freeness inside J, and the vertex of degree 3K, then again you get a yes instance.
+
+380
+00:44:24,880 --> 00:44:34,880
+So let me prove those two statements separately, because they will be basically what we need for the
+
+381
+00:44:34,880 --> 00:44:44,000
+final theorem for the final theorem. So the first lemma, as I told you, if H is epsilon sparse and
+
+382
+00:44:44,000 --> 00:44:49,600
+has more than this many vertices, then it's a yes instance, because you have a case size
+
+383
+00:44:49,600 --> 00:44:55,440
+independent set in H. The idea of this proof is simple. It's a counting argument.
+
+384
+00:44:56,160 --> 00:45:01,360
+And what you need to do basically first is to show that H must contain a vertex of degree
+
+385
+00:45:01,360 --> 00:45:07,920
+less than and over K. And then basically you apply the standard greedy packing algorithm for
+
+386
+00:45:07,920 --> 00:45:13,600
+constructing an independent set of size K. And the reason you show that the way you show that H
+
+387
+00:45:13,600 --> 00:45:19,920
+has a vertex of degree less than and over K is, again, standard counting argument and the
+
+388
+00:45:19,920 --> 00:45:26,480
+hand-shaking lemma. So if the minimum degree in H was at least n over K, then the number of edges
+
+389
+00:45:26,480 --> 00:45:34,880
+would be at least n squared over 2K, which will only happen in an epsilon sparse graph when n is
+
+390
+00:45:34,880 --> 00:45:43,120
+less than or equal 2K to the power 1 over S. And the rest of the proof is basically an induction on K.
+
+391
+00:45:45,200 --> 00:45:50,160
+Okay, and so that shows you that when you do have an epsilon sparse graph with more than
+
+392
+00:45:50,800 --> 00:46:00,480
+this many vertices, then we have a yes instance. All right, so how about the second part of the claim?
+
+393
+00:46:00,480 --> 00:46:07,920
+So now what happens if we have a C3 C4 free J that has a vertex of degree 3K? Well, let's see what
+
+394
+00:46:07,920 --> 00:46:16,720
+happens. So if we have a vertex of degree 3K and I'm going to circle it here in yellow. So how can
+
+395
+00:46:16,720 --> 00:46:22,960
+the neighborhood of that vertex look? Well, we know that J is C3 free. So the blue edges cannot
+
+396
+00:46:22,960 --> 00:46:28,960
+exist, which means that the neighborhood of the yellow vertex is an independent set inside J,
+
+397
+00:46:30,800 --> 00:46:37,680
+not in the whole graph. Well, in fact, in the whole well known because we're only talking about J
+
+398
+00:46:37,680 --> 00:46:44,960
+as a subgratio. Right, so the blue edges cannot exist because otherwise we will get a C3 inside J.
+
+399
+00:46:46,960 --> 00:46:57,600
+All right, so now let's look at the other vertices in S union T. The other, the second observation
+
+400
+00:46:57,600 --> 00:47:04,080
+that you need is that any vertex other than the yellow vertex can have at most one neighbor in
+
+401
+00:47:04,080 --> 00:47:11,600
+common with the yellow vertex. Because if you do have two neighbors in common, then you will get a C4.
+
+402
+00:47:11,680 --> 00:47:21,760
+So now what happens if we have three k vertices in the neighborhood of the yellow vertex? Well,
+
+403
+00:47:22,880 --> 00:47:30,320
+at most two k of them can be connected to some vertex in S union T and you will get at least k
+
+404
+00:47:30,320 --> 00:47:40,240
+of them, some k of them here that are only connected to the yellow vertex. And so now basically,
+
+405
+00:47:40,240 --> 00:47:44,720
+instead of using a buffer inside H, we have just found a buffer inside J.
+
+406
+00:47:46,480 --> 00:47:52,640
+And we can use the same strategy. We can jump all the tokens here, starting of course by the yellow
+
+407
+00:47:52,640 --> 00:47:56,080
+token and then jump them to where they need to go.
+
+408
+00:47:56,160 --> 00:48:13,440
+So now combining those two observations together, if you will, we get the following theorem.
+
+409
+00:48:13,440 --> 00:48:20,320
+So if H is alpha sparse and J is C3, C4, free, then the problem admits a kernel on this
+
+410
+00:48:20,320 --> 00:48:26,400
+maneuver to C's. And it's basically a simple application of the previous two lemmas. If we have
+
+411
+00:48:26,400 --> 00:48:32,480
+more than this maneuver to C's in H, it's a trivial yes instance. If J has a vertex of
+
+412
+00:48:32,480 --> 00:48:38,800
+degree 3k or more, it's trivial yes instance. And now you combine all of this together. We know that
+
+413
+00:48:38,800 --> 00:48:45,280
+S union T is of size at most 2k. We know that the neighborhood of S union T is of size at most
+
+414
+00:48:45,280 --> 00:48:52,160
+2k times 3k, which is roughly 6k squared. And now we know that the rest of the graph has at most
+
+415
+00:48:52,160 --> 00:48:58,160
+that maneuver to C's. So basically, you sum up those numbers and you get this bound.
+
+416
+00:49:06,480 --> 00:49:12,240
+All right. So how does this theorem imply the result that I promised you to start with?
+
+417
+00:49:15,440 --> 00:49:22,000
+So that token jumping and token sliding admit kernel with order k squared vertices.
+
+418
+00:49:23,360 --> 00:49:29,440
+I mean, I mean, it also holds for bipartite C4 free graphs, right? Obviously because they are C3C4 free.
+
+419
+00:49:30,240 --> 00:49:37,840
+So how do you get the kernel? Well, we know that J cannot contain more than 6k squared minus 2
+
+420
+00:49:37,840 --> 00:49:48,640
+k vertices. And we know from a theorem from another paper that C3 free graphs with k squared
+
+421
+00:49:48,640 --> 00:49:54,880
+over log k vertices must have an independent set of size at least k. And now we know that if H
+
+422
+00:49:54,880 --> 00:49:58,640
+contains more than this maneuver to C's, then we will get the yes instance as well.
+
+423
+00:50:00,880 --> 00:50:06,640
+Right. So it becomes an immediate consequence of the previous theorem. But the previous theorem
+
+424
+00:50:06,640 --> 00:50:12,560
+is even more general than this corollary. So this corollary does not really use the full power of this theorem.
+
+425
+00:50:16,400 --> 00:50:23,200
+All right. That's it. I think I'm fine. If you have questions, I will take them now.
+
+426
+00:50:23,200 --> 00:50:35,120
+So it was 55 minutes, right? For the talk. I did not go under the talk.
+
+427
+00:50:35,120 --> 00:50:39,120
+It's fine. We usually allow plus minus 10 minutes. That's all right.
+
+428
+00:50:42,400 --> 00:50:45,920
+So I have a question about token sliding. Yes.
+
+429
+00:50:46,880 --> 00:50:54,320
+So how crucial what happens if one does not restrict the independent sets during the configuration
+
+430
+00:50:55,440 --> 00:51:02,560
+to be not of the same size? Is that is that very critical for the difficulty or the easiness of the problem?
+
+431
+00:51:03,680 --> 00:51:08,560
+Well, you have to be careful how you define that because in token sliding,
+
+432
+00:51:09,520 --> 00:51:15,680
+tokens cannot leave the graph. That's correct. But the independent set sequence
+
+433
+00:51:15,680 --> 00:51:18,320
+all the independent sets have to be the same size, right?
+
+434
+00:51:18,320 --> 00:51:24,080
+Or if not some token disappeared at some point and I'm not sure how it disappeared.
+
+435
+00:51:26,400 --> 00:51:31,680
+Right. Because you start with something of size K and you're going to something of size K,
+
+436
+00:51:31,680 --> 00:51:40,080
+you cannot leave the graph unless you define it in some way. So you will remain of size K throughout.
+
+437
+00:51:41,040 --> 00:51:46,080
+But you can become slightly larger in K. But where does the new token come from?
+
+438
+00:51:49,040 --> 00:51:55,120
+So there is a third rule that I did not tell you about which is called token addition and remove.
+
+439
+00:51:56,960 --> 00:52:03,520
+Under that rule, we actually allow you to remove vertices and adversities as long as you remain
+
+440
+00:52:03,600 --> 00:52:12,240
+an independent set of size at least K. Does that answer your question?
+
+441
+00:52:12,240 --> 00:52:19,200
+Yeah, yeah, yeah, yeah. But in fact, it was shown that it was shown that
+
+442
+00:52:20,720 --> 00:52:23,680
+so addition and removal is equivalent to token jumping.
+
+443
+00:52:25,920 --> 00:52:30,560
+It doesn't it never makes sense to add more tokens to your graph if you don't need them.
+
+444
+00:52:34,400 --> 00:52:37,360
+You're only making your life harder into it and be speaking.
+
+445
+00:52:41,120 --> 00:52:43,840
+So the other question that I had is I mean I heard I
+
+446
+00:52:46,720 --> 00:52:54,640
+so is it possible to view this whole problem on an exponential size graph where every vertex
+
+447
+00:52:55,280 --> 00:52:59,680
+corresponds to a independent set in the original graph.
+
+448
+00:53:00,640 --> 00:53:06,640
+And then you have edges between two vertices if there is an edge between two vertices of the
+
+449
+00:53:06,640 --> 00:53:13,280
+independent set. And now you are doing a reachability question. Is that a meaningful way to think about
+
+450
+00:53:13,280 --> 00:53:20,240
+this? But that's exactly what we're doing. But so the way you define your adjacency, I think. So you
+
+451
+00:53:20,240 --> 00:53:25,760
+mean you define you make two independent sets adjacent if one can be reached from the other via a
+
+452
+00:53:25,760 --> 00:53:30,480
+single slide or a single joint. Exactly. Yeah, one edge here. There is one pair you and me,
+
+453
+00:53:30,480 --> 00:53:35,440
+which is adjacent. But that's but that's exactly what we're doing. Okay, okay. Yeah.
+
+454
+00:53:36,000 --> 00:53:42,560
+Right? I mean if you because we're looking at algorithms here, we kind of forget the structural
+
+455
+00:53:42,560 --> 00:53:47,520
+picture behind it. But this algorithm is finding a path in this graph that you're describing.
+
+456
+00:53:48,720 --> 00:53:54,800
+Yeah, yeah, that's it. And what we're saying is you can do it in FBT time or not depending on the
+
+457
+00:53:54,800 --> 00:54:13,360
+problem we're talking about. Hi Amir. Hi Amir. Hi. Hi. Hi. Yeah. I'm good. So I had a question. So
+
+458
+00:54:14,160 --> 00:54:21,280
+do problems remain equally hard if we bound the if we have a restriction on the number of times,
+
+459
+00:54:21,280 --> 00:54:30,720
+we can move the token to a particular vertex. The number of times you can move a token to a
+
+460
+00:54:30,720 --> 00:54:36,400
+particular vertex. Like, there's a lot of times the tokens can be moved to a vertex.
+
+461
+00:54:38,400 --> 00:54:45,040
+Well, that's definitely going to change the complexity in at least intuitively speaking, right? Because
+
+462
+00:54:46,000 --> 00:54:51,040
+now you're saying maybe it will, if you're bounding that by a constant, then you might be saying that
+
+463
+00:54:51,600 --> 00:54:58,640
+I'm not allowing exponentially large sequences anymore. But in terms of exactly how the complexity
+
+464
+00:54:58,640 --> 00:55:06,480
+changes, I don't have answers. I think it's a very nice question to pose. Even in terms of
+
+465
+00:55:06,480 --> 00:55:11,200
+a non-parameterized complexity standard complexity, I think that that would be a very interesting
+
+466
+00:55:11,200 --> 00:55:17,360
+question because because it will definitely affect the behavior. I'm not sure exactly how yet.
+
+467
+00:55:18,320 --> 00:55:22,640
+I don't know of any results that ask this particular question.
+
+468
+00:55:23,760 --> 00:55:30,320
+Okay. So I had one more question in the W. Harnes result that you presented. So do you know
+
+469
+00:55:30,320 --> 00:55:38,720
+what is the length of the the length of the changes? Actually, the number of changes or flips that
+
+470
+00:55:38,720 --> 00:55:46,880
+you make in your independence? This is just yes. Yes. Yes. Yes. Yes. We do. So here, the number of
+
+471
+00:55:46,880 --> 00:55:51,200
+changes is going to be where it's basically going to be the shortest possible sequence.
+
+472
+00:55:53,040 --> 00:55:59,840
+So it's going to be, so if you think about the simple construction, this one,
+
+473
+00:56:04,000 --> 00:56:09,440
+it's basically literally going to be these guys are going to move here. So H is going to cost me
+
+474
+00:56:09,440 --> 00:56:16,000
+one slide and then they're all going to and now this guy is going to move here and now I will
+
+475
+00:56:16,000 --> 00:56:22,640
+pay one slide for each one here. Now this is the simplified version of it. Once you go to the complete
+
+476
+00:56:22,640 --> 00:56:27,680
+version of it, you have some extra slides within the path, but you can also count those.
+
+477
+00:56:29,440 --> 00:56:37,920
+Okay. So, but does this mean that so does this mean that at a particular vertex we are placing
+
+478
+00:56:38,000 --> 00:56:48,320
+the token at most once? In this case, yes. Okay. In this case, yes. Okay. So this problem should be hard
+
+479
+00:56:48,320 --> 00:56:57,520
+even if we bound the number of times tokens can be moved to our vertex, right? Yes. Okay.
+
+480
+00:56:57,520 --> 00:57:02,720
+Yes. So here in this case, yes. Absolutely. Okay. Thanks.
+
+481
+00:57:03,440 --> 00:57:13,360
+So, Akansha, I have a remark about your question. So if a vertex cannot get a token to I's,
+
+482
+00:57:14,000 --> 00:57:18,080
+then it somehow seems to be selecting disjoint independent sets.
+
+483
+00:57:20,800 --> 00:57:25,760
+A sequence of them and that may have some bearing on coloring. Just a top level top.
+
+484
+00:57:25,920 --> 00:57:35,520
+Okay. So actually for the list, the W hardness case that I'm going to present it, it is exactly
+
+485
+00:57:35,520 --> 00:57:41,360
+the case, right? So we are not allowed to move the token like twice on the same vertex.
+
+486
+00:57:43,280 --> 00:57:49,360
+Yeah. So I didn't get your point of being so getting this disjoint independence, it's actually
+
+487
+00:57:50,080 --> 00:57:56,000
+because if you think of it from the way I thought about it, right, that you are actually trying to find
+
+488
+00:57:56,000 --> 00:58:01,680
+a path in a large graph where every vertex corresponds to an independent set and you move from one
+
+489
+00:58:01,680 --> 00:58:10,960
+independent set to another. But we can only move from one independent set to the other if the change
+
+490
+00:58:10,960 --> 00:58:24,400
+is like in case of tokens sliding, it's one probably. Yeah. So it looks to be that you're asking for
+
+491
+00:58:26,160 --> 00:58:32,560
+a collection of independent sets which are vertex disjoint. If the token sequence of independence
+
+492
+00:58:32,560 --> 00:58:39,600
+sets which are vertex disjoint. So if I may, I think I think Akansha's question would be more
+
+493
+00:58:39,600 --> 00:58:46,080
+relevant in a place where we don't have a monotone sequence, meaning a sequence. So we need a
+
+494
+00:58:46,080 --> 00:58:51,920
+version of the problem or some cases of the problem where a vertex has to be visited multiple times
+
+495
+00:58:53,520 --> 00:58:59,040
+to find solutions. And that is known to be the case for some versions or some statements of the
+
+496
+00:58:59,040 --> 00:59:05,760
+problem. And in fact, Akansha, so this was the crucial difference between piece-based completeness
+
+497
+00:59:05,760 --> 00:59:12,480
+and NP completeness of sliding versus jumping in bipartite graphs. So it was because we were
+
+498
+00:59:12,480 --> 00:59:19,760
+able to show that no vertex will be visited more than once. Okay. And the other problem. So that's
+
+499
+00:59:19,760 --> 00:59:24,560
+why it's definitely an interesting question to pose, but you have to be careful in what context you
+
+500
+00:59:24,560 --> 00:59:35,520
+pose it. Great. I don't know if that kind of settles, answers your question. Yes, yes, it does.
+
+501
+00:59:36,080 --> 00:59:39,120
+All right. Thanks. You're welcome.
+
+502
+00:59:46,960 --> 00:59:54,320
+Any more questions?
+
+503
+01:00:05,760 --> 01:00:26,480
+I guess not. Yeah, I don't think that I know more questions. I will just once again announce the
+
+504
+01:00:26,480 --> 01:00:32,320
+parameterized and go to the 301 workshop, which is going to happen in December in the link has been
+
+505
+01:00:32,400 --> 01:00:38,560
+posted once again in the chat. Some advanced topics in parameterized complexity will be discussed.
+
+506
+01:00:38,560 --> 01:00:46,720
+Those interested can have a look and register for it. And yeah, if there are some more questions,
+
+507
+01:00:46,720 --> 01:00:54,320
+please ask away.
+
+508
+01:01:02,320 --> 01:01:20,480
+So anyone can register for the school? Yes, here's anyone can.
+
+509
+01:01:20,480 --> 01:01:27,200
+Yeah, it's free and it's online and yeah, it's open to everyone.
+
+510
+01:01:27,840 --> 01:01:32,000
+Awesome. So I can share it with my students as well. Of course, of course, please do. Yeah, that's
+
+511
+01:01:32,000 --> 01:01:38,960
+a good one. And we assume some basic understanding of parameterized algorithms, but we have already shared
+
+512
+01:01:38,960 --> 01:01:45,760
+a link on the page where students can go and go through some previous lectures in parameterized
+
+513
+01:01:45,760 --> 01:01:50,320
+algorithms if they wish to just brace up or revise stuff.
+
+514
+01:01:57,680 --> 01:02:05,520
+All right, so I guess, okay, I don't think there are any more questions. So I think it's a good time
+
+515
+01:02:05,520 --> 01:02:12,640
+to wrap up. So thank you once again for the summit for agreeing to give the talk. It was really nice
+
+516
+01:02:12,640 --> 01:02:17,600
+to have you and it was really good to have something different than what we usually hear in every
+
+517
+01:02:17,600 --> 01:02:23,520
+parameterized complexity talk, at least most of them. So and yeah, these are really interesting
+
+518
+01:02:23,520 --> 01:02:29,760
+problems. Do you think of one? And thank you to the audience for being with us. And that's it for
+
+519
+01:02:29,760 --> 01:02:35,040
+today's wrap up. See you all next week. Thank you. Bye. Thank you. Bye.
+
